@@ -87,6 +87,7 @@ app.get("/",function(req,res)
 
             console.log(Dlist);
             Dlist.forEach(function(i){
+                let counter=0;
                 Disease.findOne({_id:i},function(err,fou){
                     if(err)
                     {
@@ -94,8 +95,19 @@ app.get("/",function(req,res)
                     }
                     else
                     {
-                        
-                        
+                        fou.SymptomID.forEach(function(i){
+                            Symptoms.findOne({_id:i},function(err,found){
+                                if(err)
+                                {
+                                    console.log(err);
+                                }
+                                else
+                                {
+                                    var tempq=found.SymptomQ;
+                                    
+                                }
+                            })
+                        });
                     }
                 });
             });
